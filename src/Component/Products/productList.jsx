@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { AiFillFilePdf, AiOutlineDelete, AiOutlineDownload, AiOutlineFileImage, AiOutlineFilePdf, AiOutlineSortAscending } from "react-icons/ai";
+import { AiFillFilePdf, AiOutlineDelete, AiOutlineDownload, AiOutlineEdit, AiOutlineFileImage, AiOutlineFilePdf, AiOutlineSortAscending } from "react-icons/ai";
 import { FiEdit, FiImage, FiSearch } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../Utils/navbar";
@@ -271,6 +271,13 @@ const ProductList = () => {
                           <td className="p-4 border border-gray-300">{(row.manufacture_date).split('T')[0]}</td>
                           <td className="p-4 border border-gray-300">{(row.expiary_date).split('T')[0]}</td>
                           <td className="p-4 border border-gray-300 space-x-4">
+                          <button
+                              className="text-gray-950"
+                              onClick={() => handleEditClick(row.id)}
+                            >
+                              <AiOutlineEdit/>
+
+                            </button>
                             <button
                               className="text-gray-950"
                               onClick={() => handleDownloadImage(row.barcode_image, row.id)}
