@@ -275,13 +275,15 @@ const ProductList = () => {
                               className="text-gray-950"
                               onClick={() => handleDownloadImage(row.barcode_image, row.id)}
                             >
-                              <AiOutlineDownload size={13} /> <AiOutlineFileImage />
+                              {/* <AiOutlineDownload size={13} /> */}
+                               <AiOutlineFileImage size={18} />
                             </button>
                             <button
                               className="text-gray-950"
                               onClick={() => handlePdfClicks(row.id)}
                             >
-                              <AiOutlineDownload size={13} /> <AiOutlineFilePdf />
+                              {/* <AiOutlineDownload size={13} /> */}
+                               <AiOutlineFilePdf size={18} />
                             </button>
                             <button className="text-gray-950" onClick={() => { handleDeleteClick(row.id) }}>
                               <AiOutlineDelete />
