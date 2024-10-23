@@ -254,15 +254,15 @@ const ProductList = () => {
                 <table className="w-full border border-gray-300 bg-white">
                   <thead>
                     <tr className="bg-gray-950">
-                      <th className="p-4 border-b border-gray-300 text-white">SKU ID</th>
-                      <th className="p-4 border-b border-gray-300 text-white">Title</th>
-                      <th className="p-4 border-b border-gray-300 text-white hidden md:table-cell">Description</th>
-                      <th className="p-4 border-b border-gray-300 text-white">Flavour</th>
-                      <th className="p-4 border-b border-gray-300 text-white">Price</th>
-                      <th className="p-4 border-b border-gray-300 text-white">Barcode</th>
-                      <th className="p-4 border-b border-gray-300 text-white hidden md:table-cell">Manufacture</th>
-                      <th className="p-4 border-b border-gray-300 text-white">Expiary</th>
-                      <th className="p-4 border-b border-gray-300 text-white">Action</th>
+                      <th className="p-2 border-b border-gray-300 text-white">SKU ID</th>
+                      <th className="p-2 border-b border-gray-300 text-white">Title</th>
+                      <th className="p-2 border-b border-gray-300 text-white hidden md:table-cell">Description</th>
+                      <th className="p-2 border-b border-gray-300 text-white">Flavour</th>
+                      <th className="p-2 border-b border-gray-300 text-white">Price</th>
+                      <th className="p-2 border-b border-gray-300 text-white">Barcode</th>
+                      <th className="p-2 border-b border-gray-300 text-white hidden md:table-cell">Manufacture</th>
+                      <th className="p-2 border-b border-gray-300 text-white">Expiary</th>
+                      <th className="p-2 border-b border-gray-300 text-white">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -275,7 +275,7 @@ const ProductList = () => {
                           <td className="p-2 border border-gray-300">{row.flavour}</td>
                           <td className="p-2 border border-gray-300">{row.price}</td>
                           <td className="p-2 border border-gray-300"><img src={row.barcode_image} className="w-30 h-20" id={`barcode-${row.id}`} alt="Barcode" /></td>
-                          <td className="p-4 border border-gray-300 hidden md:table-cell">{(row.manufacture_date).split('T')[0]}</td>
+                          <td className="p-2 border border-gray-300 hidden md:table-cell">{(row.manufacture_date).split('T')[0]}</td>
                           <td className={isExpiringSoon(row.expiary_date)?"bg-red-500 text-white border-gray-300":"p-4 border border-gray-300"}>{(row.expiary_date).split('T')[0]}</td>
                           <td className="p-4 border border-gray-300 space-x-4">
                           <button
