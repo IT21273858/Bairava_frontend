@@ -4,7 +4,6 @@ import { FiEdit, FiSearch } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../Utils/navbar";
 import apiClient from "../../Utils/config/apiClient"; // Assuming you have an API client set up
-import InvoicePDFGenerator from "../../Utils/invoicepdf";
 import Swal from "sweetalert2";
 import AlertPopup from "../Alertpopup";
 import FetchLoader from "../loader/fetchloader";

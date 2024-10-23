@@ -4,12 +4,13 @@ import { FiEdit, FiSearch } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../Utils/navbar";
 import apiClient from "../../Utils/config/apiClient"; // Assuming you have an API client set up
-import InvoicePDFGenerator from "../../Utils/invoicepdf";
+import InvoicePDFGenerator from "../../Utils/productpdf";
 import Swal from "sweetalert2";
 import AlertPopup from "../Alertpopup";
 import FetchLoader from "../loader/fetchloader";
 import { toPng } from 'html-to-image';
 import jsPDF from 'jspdf';
+import ProductPdfGenerator from "../../Utils/productpdf";
 
 
 const ProductList = () => {
@@ -67,6 +68,49 @@ const ProductList = () => {
     }
   }
 
+  const handlePdfClicks = async (productId) => {
+    try {
+      const response = await apiClient.get(`/products/get/${productId}`);
+      const payload = response.data.product;
+      if (payload) {
+        console.log(payload);
+        ProductPdfGenerator(payload)
+      } else {
+        console.error("No invoice order data found.");
+      }
+    } catch (error) {
+      console.error("Error fetching invoice order data:", error);
+    }
+  }
+
+  function convertImageToBase64(url, callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+      const reader = new FileReader();
+      reader.onloadend = function() {
+        callback(reader.result); // Base64 string result
+      };
+      reader.readAsDataURL(xhr.response); // Converts Blob to Base64
+    };
+    xhr.open('GET', url);
+    xhr.responseType = 'blob'; // Use blob to handle binary image data
+    xhr.send();
+  }
+  function handleDownloadPDF(barcodeUrl, barcodeId) {
+    const imageUrl =barcodeUrl // Your image URL
+  
+    convertImageToBase64(imageUrl, (base64Image) => {
+      const doc = new jsPDF();
+  
+      // Now add the Base64 image to your PDF
+      doc.addImage(base64Image, 'PNG', 10, 10, 50, 50); // Adjust size and position as needed
+  
+      doc.save('product-info.pdf');
+    });
+  }
+  
+  
+
   const handleDownloadImage = async (barcodeUrl, barcodeId) => {
     try {
       const link = document.createElement("a");
@@ -78,19 +122,19 @@ const ProductList = () => {
     }
   };
 
-  const handleDownloadPDF = async (barcodeUrl, barcodeId) => {
-    const pdf = new jsPDF();
-    try {
-      const img = new Image();
-      img.src = barcodeUrl;
-      img.onload = () => {
-        pdf.addImage(img, "PNG", 10, 10, 100, 50); // Adjust the dimensions as necessary
-        pdf.save(`barcode-${barcodeId}.pdf`);
-      };
-    } catch (error) {
-      console.error("Failed to download PDF:", error);
-    }
-  };
+  // const handleDownloadPDF = async (barcodeUrl, barcodeId) => {
+  //   const pdf = new jsPDF();
+  //   try {
+  //     const img = new Image();
+  //     img.src = barcodeUrl;
+  //     img.onload = () => {
+  //       pdf.addImage(img, "PNG", 10, 10, 100, 50); // Adjust the dimensions as necessary
+  //       pdf.save(`barcode-${barcodeId}.pdf`);
+  //     };
+  //   } catch (error) {
+  //     console.error("Failed to download PDF:", error);
+  //   }
+  // };
 
 
   const handleDeleteClick = async (orderid) => {
@@ -235,7 +279,7 @@ const ProductList = () => {
                             </button>
                             <button
                               className="text-gray-950"
-                              onClick={() => handleDownloadPDF(row.barcode_image, row.id)}
+                              onClick={() => handlePdfClicks(row.id)}
                             >
                               <AiOutlineDownload size={13} /> PDF
                             </button>
