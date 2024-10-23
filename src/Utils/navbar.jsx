@@ -35,7 +35,6 @@ const Navbar = ({ buttons, activeButton, onButtonClick, profileName, profilePict
       "Leads": "/lead-list",
       "Booking": "/booking",
       "Clients": "/client-list",
-      "Invoice": "/invoice",
       "Purchase Order": "/purchase-list",
       "Transport": "/transport-list",
       "Calendar": "/calendar",

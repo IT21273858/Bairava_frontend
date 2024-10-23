@@ -86,26 +86,19 @@ const Sidebar = () => {
               <span className="text-lg">🏠</span>
               <span className="text-md">Dashboard</span>
             </li>
-            <li
+            {/* <li
               className="flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-200 rounded-md"
               onClick={() => handleNavigation('/list-user')}
             >
               <span className="text-lg">👤</span>
               <span className="text-md">User Profile</span>
-            </li>
+            </li> */}
             <li
               className="flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-200 rounded-md"
               onClick={() => handleNavigation('/product')}
             >
               <span className="text-lg">{ <AiFillProduct />} </span>
               <span className="text-md">Products</span>
-            </li>
-            <li
-              className="flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-200 rounded-md"
-              onClick={() => handleNavigation('/invoice')}
-            >
-              <span className="text-lg">🧾</span>
-              <span className="text-md">Invoice</span>
             </li>
             <li
               className="flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-200 rounded-md"

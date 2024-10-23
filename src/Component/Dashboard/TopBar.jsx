@@ -33,8 +33,7 @@ const TopBar = () => {
   }, []);
 
   return (
-    <div className="flex justify-between items-center mb-6">
-      <input type="text" placeholder="Search here..." className="p-3 rounded-lg w-1/2" />
+    <div className="flex justify-end items-center mb-6">
       <div className="flex items-center">
         <img src={ProfileImg} alt="User" className="w-10 h-10 rounded-full mr-2" />
         <span>{ProfileName}</span>

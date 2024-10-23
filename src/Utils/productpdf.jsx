@@ -31,13 +31,13 @@ const ProductPdfGenerator = (payload) => {
         const pageWidth = doc.internal.pageSize.getWidth();
         const imgXPosition = pageWidth - imgWidth - 10;
 
-        doc.addImage(img, "PNG", 10, 5, imgWidth, imgHeight);
+        doc.addImage(img, "PNG", 5, 5, imgWidth + 20, imgHeight);
         const title = payload.name;
         doc.setFont("InknutAntiqua", "normal");
         doc.setFontSize(16);
         doc.setTextColor(43, 0, 145);
 
-        const titleXPosition = (pageWidth - doc.getTextWidth(title)) - 20;
+        const titleXPosition = (pageWidth - doc.getTextWidth(title)) - 30;
         doc.text(title, titleXPosition, 20);
 
         doc.setFont("Inter", "regular");
@@ -45,11 +45,11 @@ const ProductPdfGenerator = (payload) => {
         doc.setTextColor(68, 3, 150);
         doc.text("Flavour:", titleXPosition, 30);
         doc.setTextColor(0, 0, 0);
-        doc.text(payload.flavour || "001", titleXPosition+25, 30);
+        doc.text(payload.flavour || "001", titleXPosition + 25, 30);
         doc.setTextColor(68, 3, 150);
         doc.text("Price (Rs.):", titleXPosition, 35);
         doc.setTextColor(0, 0, 0);
-        doc.text(payload.price || "001", titleXPosition+25, 35);
+        doc.text(payload.price || "001", titleXPosition + 25, 35);
 
 
         doc.addImage(Footerlogo, 'PNG', 70, 218, 70, 60)
@@ -61,10 +61,9 @@ const ProductPdfGenerator = (payload) => {
 
 
         // Footer
-        // doc.output('dataurlnewwindow');
         const imgs = new Image();
         imgs.src = payload.barcode_image;
-        // doc.addImage(imgs,'PNG', 0, 270, 60, 70)
+        doc.addImage(imgs, 'PNG', 60, 100, 100, 70)
         doc.save(`product_${payload.name}.pdf`);
     };
 };

@@ -8,9 +8,6 @@ import LeadFormEdit from "./Component/LeadManagement/LeadFormEdit";
 import Leadslist from "./Component/LeadManagement/leadList";
 import NotFound from "./Error/404error";
 import Loader from './Loader';
-import InvoiceList from "./Component/Invoice/invoiceList";
-import CreateInvoiceForm from "./Component/Invoice/createInvoice";
-import EditInvoiceForm from "./Component/Invoice/editInvoice";
 import TransportList from './Component/TransportManagement/transportList'; // Import TransportList
 import TransportFormCreate from './Component/TransportManagement/TransportFormCreate'; // Import TransportFormCreate
 import TransportFormEdit from './Component/TransportManagement/TransportFormEdit'; // Import TransportFormEdit
@@ -29,9 +26,6 @@ function App() {
           <Route path='/create-lead' element={<WithLoader><LeadFormCreate /></WithLoader>} />
           <Route path='/edit-lead/:id' element={<LeadFormEdit />} />
           <Route path='/lead-list' element={<Leadslist />} />
-          <Route path='/invoice' element={<InvoiceList />} />
-          <Route path='/create-invoice' element={<CreateInvoiceForm />} />
-          <Route path='/edit-invoice/:id' element={<EditInvoiceForm />} />
           <Route path='/product' element={<ProductList />} />
           <Route path='/create-product' element={<CreateProductForm />} />
           <Route path='/edit-product/:id' element={<EditProductForm />} />
