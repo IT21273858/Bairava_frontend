@@ -226,7 +226,7 @@ const ProductList = () => {
         onButtonClick={handleButtonClick}
       />
 
-      <div className="mt-4">
+      <div className="mt-4 px-2">
         <div className="flex justify-between items-center md:px-4 px-2">
           <h2 className="md:text-2xl text-lg font-semibold text-gray-950">All Products</h2>
           <div className="flex items-center gap-2 border border-gray-300 rounded">
@@ -341,7 +341,7 @@ const ProductList = () => {
                 </button>
               </div>
 
-              <div className="flex justify-end mt-6">
+              <div className="flex justify-end mt-6 mb-2">
                 <button
                   className="px-6 py-2 border-gray-950 border-2 text-gray-900 rounded-xl hover:bg-gray-950 hover:text-white hover:border-gray-600"
                   onClick={handleCreateProduct}
