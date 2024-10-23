@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { AiFillFilePdf, AiOutlineDelete, AiOutlineDownload, AiOutlineEdit, AiOutlineFileImage, AiOutlineFilePdf, AiOutlineSortAscending } from "react-icons/ai";
-import { FiEdit, FiImage, FiSearch } from "react-icons/fi";
+import { AiOutlineDelete, AiOutlineEdit, AiOutlineFileImage, AiOutlineFilePdf, AiOutlineSortAscending } from "react-icons/ai";
+import { FiSearch } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../Utils/navbar";
-import apiClient from "../../Utils/config/apiClient"; // Assuming you have an API client set up
+import apiClient from "../../Utils/config/apiClient"; 
 import InvoicePDFGenerator from "../../Utils/productpdf";
 import Swal from "sweetalert2";
 import AlertPopup from "../Alertpopup";
 import FetchLoader from "../loader/fetchloader";
-import { toPng } from 'html-to-image';
 import jsPDF from 'jspdf';
 import ProductPdfGenerator from "../../Utils/productpdf";
 
@@ -21,7 +20,7 @@ const ProductList = () => {
   const [sortOrder, setSortOrder] = useState("asc");
   const [deleting, setisDeleting] = useState(false)
   const [isloading, setIsloading] = useState(false)
-  const rowsPerPage = 6;
+  const rowsPerPage = 5;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,7 +28,7 @@ const ProductList = () => {
       setIsloading(true)
       try {
         const response = await apiClient._get('/products/getAll');
-        setRows(response.products); // Assuming the API returns an array of orders
+        setRows(response.products); 
         console.log("Response");
         console.log(response.products);
         setIsloading(false)
@@ -210,6 +209,14 @@ const ProductList = () => {
     })
   ).slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
 
+  const isExpiringSoon = (expiryDate) => {
+    const currentDate = new Date();
+    const expiaryDate = new Date(expiryDate);
+    const diffTime = expiaryDate - currentDate;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays <= 30; // Consider products expiring within the next 30 days
+  };
+
   return (
 
     <div className="sm:container md:mx-auto">
@@ -269,7 +276,7 @@ const ProductList = () => {
                           <td className="p-4 border border-gray-300">{row.price}</td>
                           <td className="p-4 border border-gray-300"><img src={row.barcode_image} className="w-30 h-20" id={`barcode-${row.id}`} alt="Barcode" /></td>
                           <td className="p-4 border border-gray-300">{(row.manufacture_date).split('T')[0]}</td>
-                          <td className="p-4 border border-gray-300">{(row.expiary_date).split('T')[0]}</td>
+                          <td className={isExpiringSoon(row.expiary_date)?"bg-red-500 text-white border-gray-300":"p-4 border border-gray-300"}>{(row.expiary_date).split('T')[0]}</td>
                           <td className="p-4 border border-gray-300 space-x-4">
                           <button
                               className="text-gray-950"
