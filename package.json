@@ -1,0 +1,56 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.7.5",
+    "dotenv": "^16.4.5",
+    "html-to-image": "^1.11.11",
+    "js-cookie": "^3.0.5",
+    "jspdf": "^2.5.2",
+    "jspdf-autotable": "^3.8.3",
+    "jwt-decode": "^4.0.0",
+    "react": "^18.3.1",
+    "react-calendar": "^5.0.0",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.53.1",
+    "react-icons": "^5.3.0",
+    "react-router-dom": "^6.26.1",
+    "react-spinners": "^0.14.1",
+    "sweetalert2": "^11.14.3",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "preview": "vite preview"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "tailwindcss": "^3.4.10",
+    "vite": "^5.4.4"
+  }
+}
