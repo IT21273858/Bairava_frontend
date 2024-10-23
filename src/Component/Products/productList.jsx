@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { AiOutlineDelete, AiOutlineDownload, AiOutlineSortAscending } from "react-icons/ai";
-import { FiEdit, FiSearch } from "react-icons/fi";
+import { AiFillFilePdf, AiOutlineDelete, AiOutlineDownload, AiOutlineFileImage, AiOutlineFilePdf, AiOutlineSortAscending } from "react-icons/ai";
+import { FiEdit, FiImage, FiSearch } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../Utils/navbar";
 import apiClient from "../../Utils/config/apiClient"; // Assuming you have an API client set up
@@ -85,9 +85,9 @@ const ProductList = () => {
 
   function convertImageToBase64(url, callback) {
     const xhr = new XMLHttpRequest();
-    xhr.onload = function() {
+    xhr.onload = function () {
       const reader = new FileReader();
-      reader.onloadend = function() {
+      reader.onloadend = function () {
         callback(reader.result); // Base64 string result
       };
       reader.readAsDataURL(xhr.response); // Converts Blob to Base64
@@ -97,19 +97,19 @@ const ProductList = () => {
     xhr.send();
   }
   function handleDownloadPDF(barcodeUrl, barcodeId) {
-    const imageUrl =barcodeUrl // Your image URL
-  
+    const imageUrl = barcodeUrl // Your image URL
+
     convertImageToBase64(imageUrl, (base64Image) => {
       const doc = new jsPDF();
-  
+
       // Now add the Base64 image to your PDF
       doc.addImage(base64Image, 'PNG', 10, 10, 50, 50); // Adjust size and position as needed
-  
+
       doc.save('product-info.pdf');
     });
   }
-  
-  
+
+
 
   const handleDownloadImage = async (barcodeUrl, barcodeId) => {
     try {
@@ -275,13 +275,13 @@ const ProductList = () => {
                               className="text-gray-950"
                               onClick={() => handleDownloadImage(row.barcode_image, row.id)}
                             >
-                              <AiOutlineDownload size={13} /> Image
+                              <AiOutlineDownload size={13} /> <AiOutlineFileImage />
                             </button>
                             <button
                               className="text-gray-950"
                               onClick={() => handlePdfClicks(row.id)}
                             >
-                              <AiOutlineDownload size={13} /> PDF
+                              <AiOutlineDownload size={13} /> <AiOutlineFilePdf />
                             </button>
                             <button className="text-gray-950" onClick={() => { handleDeleteClick(row.id) }}>
                               <AiOutlineDelete />
