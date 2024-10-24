@@ -11,8 +11,8 @@ const CreateProductForm = () => {
   const [formData, setFormData] = useState({
     SKU_id: "",
     name: "",
-    description: "",
-    flavour: "",
+    description: "", // Optional
+    flavour: "", // Optional
     price: "",
     expiary_date: "",
     manufacture_date: "",
@@ -34,8 +34,6 @@ const CreateProductForm = () => {
     const newErrors = {};
     const requiredFields = [
       "name",
-      "description",
-      "flavour",
       "price",
       "expiary_date",
       "manufacture_date",
@@ -59,19 +57,18 @@ const CreateProductForm = () => {
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       Object.keys(validationErrors).map((err) => {
-        if(Object.keys(validationErrors).length==7){
+        if (Object.keys(validationErrors).length === 7) {
           AlertPopup({
             message: "Did you fill all inputs?",
             icon: "question",
           });
-        }else{
-
+        } else {
           AlertPopup({
             message: `${err} is required`,
             icon: "warning",
           });
         }
-      })
+      });
       setIsLoading(false);
       return;
     }
@@ -96,8 +93,8 @@ const CreateProductForm = () => {
 
       const response = await apiClient.post(`/products/create`, dataToSend);
       console.log("Product Created:", response.data);
-      setIseditting(false)
-      navigate('/product');
+      setIseditting(false);
+      navigate("/product");
       setIsLoading(false);
     } catch (error) {
       setIseditting(false);
@@ -144,7 +141,9 @@ const CreateProductForm = () => {
                         className="text-[#191521] font-medium md:w-1/5 w-2/5 h-10 items-center flex text-left ml-1 md:text-lg text-sm  rounded-lg"
                       >
                         {field.label}{" "}
-                        <span className="text-red-500">*</span>
+                        {["name", "price", "expiary_date", "manufacture_date", "net_weight"].includes(field.id) && (
+                          <span className="text-red-500">*</span>
+                        )}
                       </label>
                       <input
                         type={field.type}

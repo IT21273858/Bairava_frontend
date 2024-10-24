@@ -45,7 +45,7 @@ const ProductPdfGenerator = (payload) => {
         doc.setTextColor(68, 3, 150);
         doc.text("Flavour:", titleXPosition, 30);
         doc.setTextColor(0, 0, 0);
-        doc.text(payload.flavour || "001", titleXPosition + 25, 30);
+        doc.text(payload.flavour || "none", titleXPosition + 25, 30);
         doc.setTextColor(68, 3, 150);
         doc.text("Price (Rs.):", titleXPosition, 35);
         doc.setTextColor(0, 0, 0);
