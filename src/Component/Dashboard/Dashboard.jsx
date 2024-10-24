@@ -11,9 +11,9 @@ const Dashboard = () => {
       <div className='flex'>
       <Sidebar />
       </div>
-      <div className="flex-1 flex flex-col bg-gray-100 p-6 ml-44 ">
+      <div className="flex-1 flex flex-col bg-gray-100 p-6 md:ml-44 ">
         <TopBar />
-        <div className="grid grid-cols-3 gap-6 mb-6 mt-16">
+        <div className="grid md:grid-cols-3 gap-6 mb-6 mt-16">
         
           <Widget title="Total Products" value="products" icon={<AiOutlineUser />}  />
           <Widget title="Expiring Products" value="expiary" icon={<AiOutlineCalendar />}  />

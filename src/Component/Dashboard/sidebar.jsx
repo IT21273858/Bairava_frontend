@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate hook
 import { AiFillProduct, AiOutlineMenu } from 'react-icons/ai'; // Import a hamburger menu icon
 import getToken from '../token/gettoken';
 import CheckToken from '../token/checktoken';
-import Logo from '../../Utils/image/Logo-light Theme.png';
+import Logo from '../../Utils/image/logo.png';
 import Cookies from "js-cookie";
 
 const Sidebar = () => {
@@ -58,12 +58,12 @@ const Sidebar = () => {
         className={`fixed inset-y-0 left-0 bg-white p-5 ${isOpen ? "block" : "hidden"} md:block w-55 duration-300 z-50`}
       >
         {/* Sidebar content */}
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center w-40">
           {/* Logo */}
           <img
             src={Logo}
             alt="Logo"
-            className="cursor-pointer h-20 mb-4"
+            className="cursor-pointer w-18 h-18 mb-4"
             onClick={toggleSidebar}  // Toggles the sidebar when clicked
           />
 

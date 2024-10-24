@@ -30,7 +30,7 @@ const LoginScreen = () => {
   const submitbtn = useRef(null);
 
   const loginCover =
-    "https://i.pinimg.com/564x/50/e7/6e/50e76edb2155f5dec0a2485ad8c0a1e9.jpg";
+    "https://i.pinimg.com/736x/37/40/a0/3740a02e35d43e66dd1217cc03142517.jpg";
 
   const submitHandle = async (data) => {
     setLoading(true);
